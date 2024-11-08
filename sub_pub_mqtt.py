@@ -24,7 +24,7 @@ if not Path(ConfigFile).is_file():
     config['brokerpub'] = {'host': '', 'port': '1883','user': '','password': '', 'topic': ''}
     with open(ConfigFile, 'w') as configfile:
         config.write(configfile)
-    config.read(ConfigFile)
+    quit()
 else:
     config.read(ConfigFile)
 
