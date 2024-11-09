@@ -10,7 +10,7 @@ The received messages will be forwarded to the second Broker (brokerpub).
 
 All Parameters are stored in `config.ini`. An empty file will be generated of not existent.
 
-At the Moment only unencrypted Connections are supported.
+At the Moment, only unencrypted Connections are supported.
 
 ## Example Configfile
 

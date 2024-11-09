@@ -9,7 +9,7 @@ import configparser
 from pathlib import Path
 
 # Definition der Configdatei
-ConfigFile = "config.ini"
+CONFIG_FILE = "config.ini"
 
 message = ""
 
@@ -18,15 +18,15 @@ message = ""
 
 config = configparser.ConfigParser()
 
-if not Path(ConfigFile).is_file():
+if not Path(CONFIG_FILE).is_file():
     print("Konfigurationsdatei nicht vorhanden - Erzeugen einer leeren Datei")
     config['brokersub'] = {'host': '', 'port': '1883','user': '','password': '', 'topic': ''}
     config['brokerpub'] = {'host': '', 'port': '1883','user': '','password': '', 'topic': ''}
-    with open(ConfigFile, 'w') as configfile:
+    with open(CONFIG_FILE, 'w') as configfile:
         config.write(configfile)
     quit()
 else:
-    config.read(ConfigFile)
+    config.read(CONFIG_FILE)
 
 # Definition der Variablen
 BrokerSub = config['brokersub']['host']
@@ -88,7 +88,6 @@ client_sub.on_message = on_message
 client_pub = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2)
 client_pub.username_pw_set(username=BrokerPubUser,password=BrokerPubPass)
 client_pub.on_connect = on_connect_pub
-#client_pub.on_message = on_message
 client_pub.on_publish = on_publish
 
 try:
